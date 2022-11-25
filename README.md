@@ -64,7 +64,7 @@ $ npm run test:cov
 
 ## Stay in touch
 
-- Author - [Rogelio Mohigefer Barrera]([(https://github.com/RogeMB)])
+- Author - [Rogelio Mohigefer Barrera](https://github.com/RogeMB)
 
 ## License
 
