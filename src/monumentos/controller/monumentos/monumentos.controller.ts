@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { createMonumentoDto } from 'src/monumentos/dtos/createMonumento.dto';
 import { UpdateMonumentoDto } from 'src/monumentos/dtos/updateMonumento.dto';
@@ -13,9 +14,16 @@ export class MonumentosController {
         return this.monumentoServ.findMonumentos();
     }
 
+    @Get('id')
+    async getMonumentoById(
+        @Param('id', ParseIntPipe) id: number) {
+        await this.monumentoServ.findMonumentoById(id);
+    }
+
+
     @Post()
-    createMonumento(@Body() createMonumentoDto: createMonumentoDto) {
-        return this.monumentoServ.createMonumento(createMonumentoDto);
+    createMonumento(@Body() createMonumentDto: createMonumentoDto) {
+        return this.monumentoServ.createMonumento(createMonumentDto);
     }
 
     @Put(':id')  //en realidad puede ser considerado un patch en lugar de put porque nos permite modificar solo un atributo, pero lo dejamos put porque puede modificarlos todos

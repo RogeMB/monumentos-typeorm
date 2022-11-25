@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateMonumentoParams, UpdateMonumentoParams } from 'src/monumentos/utils/types';
@@ -15,6 +16,14 @@ export class MonumentosService {
         return this.monumentoRepo.find();
     }
 
+    findMonumentoById(id: number) {
+        if(!id) {
+            throw new HttpException('Monumento no encontrado', HttpStatus.NOT_FOUND);
+        }else {
+            return this.monumentoRepo.findBy({ id });
+        }
+    }
+
     createMonumento(monumentoAtributos: CreateMonumentoParams) {
         const newMonumento = this.monumentoRepo.create({
             ...monumentoAtributos
@@ -24,7 +33,7 @@ export class MonumentosService {
 
     updateMonumento(id: number, monumentoAtributos: UpdateMonumentoParams) {
         if(!id) {
-            throw new HttpException('Monumento no encontrado', HttpStatus.NOT_FOUND);
+            throw new HttpException('Monumento no encontrado', HttpStatus.BAD_REQUEST);
         }else {
             return this.monumentoRepo.update({ id }, { ...monumentoAtributos }); // con los tres puntitos hacemos que si updateamos un solo atributo en lugar de todos, no pete y funcione.
         }       

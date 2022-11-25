@@ -21,10 +21,17 @@
 
 [MySQL](https://www.mysql.com/) You will download MySQL to acces to the DB of this project.
 
+[TypeORM] (https://typeorm.io/) TypeORM library
+
+
 ## Installation
 
 ```bash
 $ npm install -g @nestjs/cli
+
+$ install MYSQL 
+
+$ npm add @nestjs/typeorm typeorm mysql2n
 
 ```
 
@@ -39,6 +46,7 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+
 ```
 
 ## Test
