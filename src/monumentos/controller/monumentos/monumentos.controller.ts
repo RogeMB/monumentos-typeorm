@@ -14,7 +14,7 @@ export class MonumentosController {
         return this.monumentoServ.findMonumentos();
     }
 
-    @Get('id')
+    @Get(':id')
     async getMonumentoById(
         @Param('id', ParseIntPipe) id: number) {
         await this.monumentoServ.findMonumentoById(id);
